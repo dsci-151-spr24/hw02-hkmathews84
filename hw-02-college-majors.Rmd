@@ -288,7 +288,7 @@ college_recent_grads %>%
 
 8.  Which STEM majors have median salaries equal to or less than the median for all majors' median earnings? Your output should only show the major name and median, 25th percentile, and 75th percentile earning for that major as and should be sorted such that the major with the highest median earning is on top.
 
-```{r eval = FALSE}
+```{r}
 college_recent_grads %>%
   select(major, median, p25th, p75th, major_type) %>%
   arrange(desc(median)) %>%
@@ -303,6 +303,14 @@ college_recent_grads %>%
 ## What types of majors do women tend to major in?
 
 9.  Create a scatterplot of median income vs. proportion of women in that major, coloured by whether the major is in a STEM field or not. Describe the association between these three variables.
+
+```{r}
+college_recent_grads %>%
+  ggplot(aes(x = median, y = women, color = major_type)) +
+  geom_point()
+```
+
+***How these three variables are associated: STEM fields are considered male-dominant fields and tend to be the higher earning fields, so this scatterplot shows the relation between STEM and non-STEM fields that women choose and their median income.***
 
 ## Further exploration
 
